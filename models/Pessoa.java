@@ -8,7 +8,7 @@ public abstract class Pessoa {
     protected Long codigoDePesoa;
     protected String nome;
     protected LocalDate dataNascimento;
-
+    protected Instituicao instituicao;
     public void inscreverSessaoTecnica(SessaoTecnica sessao) {
 
     }
@@ -57,7 +57,12 @@ public abstract class Pessoa {
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
+    public void setInstituicao(Instituicao instituicao){
+        this.instituicao = instituicao;
+    }
+    public Instituicao getInstituicao(){
+        return this.instituicao;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,7 +87,6 @@ public abstract class Pessoa {
                 " id='" + getId() + "'" +
                 ", codigoDePesoa='" + getCodigoDePesoa() + "'" +
                 ", nome='" + getNome() + "'" +
-                ", dataNascimento='" + getDataNascimento() + "'" +
-                "}";
+                ", dataNascimento='" + getDataNascimento() + "'";
     }
 }

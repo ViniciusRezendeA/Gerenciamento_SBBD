@@ -1,19 +1,37 @@
 package models;
 
 import java.sql.Time;
+import java.util.List;
 import java.util.Objects;
 
 public class Apresentacao {
     private Long id;
     private Time horaApresentacao;
     private Time duracaoApresentacao;
-
+    private List<SessaoTecnica> sessoesTecnicas;
     public void definirSessaoTecnica(){
 
     }
 
 
     public Apresentacao() {
+    }
+
+    public Apresentacao(Long id, Time horaApresentacao, Time duracaoApresentacao, List<SessaoTecnica> sessoesTecnicas) {
+        this.id = id;
+        this.horaApresentacao = horaApresentacao;
+        this.duracaoApresentacao = duracaoApresentacao;
+        this.sessoesTecnicas = sessoesTecnicas;
+    }
+
+    public List<SessaoTecnica> getSessoesTecnicas() {
+        return this.sessoesTecnicas;
+    }
+   public void addSessoesTecnicas(SessaoTecnica sessoesTecnics) {
+        this.sessoesTecnicas.add(sessoesTecnics);
+   }
+    public void setSessoesTecnicas(List<SessaoTecnica> sessoesTecnicas) {
+        this.sessoesTecnicas = sessoesTecnicas;
     }
 
     public Apresentacao(Long id, Time horaApresentacao, Time duracaoApresentacao) {
