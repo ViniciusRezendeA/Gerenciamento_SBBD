@@ -10,7 +10,7 @@ public class RepositorySessaoTecnica extends Repository<SessaoTecnica> {
     }
 
     @Override
-    public SessaoTecnica findElementById(int id) {
+    public SessaoTecnica findElementById(Long id) {
         for (SessaoTecnica element : list) {
             if(element.getId() == id) {
                 return element;

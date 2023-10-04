@@ -10,7 +10,7 @@ public class RepositoryPessoa extends Repository<Pessoa>{
     }
 
     @Override
-    public Pessoa findElementById(int id) {
+    public Pessoa findElementById(Long id) {
         for (Pessoa element : list) {
             if(element.getId() == id) {
                 return element;

@@ -11,7 +11,7 @@ public class RepositoryApresentacao extends Repository<Apresentacao> {
     }
 
     @Override
-    public Apresentacao findElementById(int id) {
+    public Apresentacao findElementById(Long id) {
         for (Apresentacao element : list) {
             if(element.getId() == id) {
                 return element;

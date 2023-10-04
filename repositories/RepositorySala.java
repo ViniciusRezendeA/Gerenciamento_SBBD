@@ -10,7 +10,7 @@ public class RepositorySala extends Repository<Sala> {
     }
 
         @Override
-    public Sala findElementById(int id) {
+    public Sala findElementById(Long id) {
         for (Sala element : list) {
             if(element.getId() == id) {
                 return element;

@@ -12,7 +12,7 @@ public class RepositoryTrabalho extends Repository<Trabalho> {
     }
 
     @Override
-    public Trabalho findElementById(int id) {
+    public Trabalho findElementById(Long id) {
         for (Trabalho element : list) {
             if (element.getId() == id) {
                 return element;

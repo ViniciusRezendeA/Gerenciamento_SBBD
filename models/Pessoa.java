@@ -1,10 +1,9 @@
 package models;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public abstract class Pessoa {
-    protected Long id;
+    protected long id;
     protected Long codigoDePesoa;
     protected String nome;
     protected LocalDate dataNascimento;
