@@ -19,15 +19,14 @@ public abstract class Repository<T> {
     }
 
     public boolean updateElement(Long id, T element) {
-        for(int i = 0; i < list.size(); i++) {
-            if(list.get(i).hashCode() == id.hashCode() - 31)
-            {
-                list.set(i, element);
-                return true;
-            }
-        }
+        int lastIndex = list.indexOf(findElementById(id));
 
-        return false;
+        if(lastIndex == -1)
+            return false;
+
+        list.set(lastIndex, element);
+
+        return true;
     }
 
     public boolean deleteElement(T element) {

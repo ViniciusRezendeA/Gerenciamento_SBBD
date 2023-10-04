@@ -79,14 +79,14 @@ public class ServiceEstudante {
         Utils.clearTerminal();
         System.out.println("Informe o id do Estudante");
         String option = scan.nextLine();
-        int optionInt = 0;
+        Long optionLong = 0L;
         try {
-            optionInt = Integer.parseInt(option);
+            optionLong = Long.parseLong(option);
         } catch (Exception e) {
             Utils.invalidOption();
             deletarEstudante();
         }
-        Estudante estudante = getEstudante(optionInt);
+        Estudante estudante = getEstudante(optionLong);
         repositoryEstudante.deleteElement(estudante);
     }
 
@@ -94,9 +94,9 @@ public class ServiceEstudante {
         Utils.clearTerminal();
         System.out.println("Informe o id do Estudante");
         String option = scan.nextLine();
-        int optionInt = 0;
+        Long optionInt = 0L;
         try {
-            optionInt = Integer.parseInt(option);
+            optionInt = Long.parseLong(option);
         } catch (Exception e) {
             Utils.invalidOption();
             buscarEstudante();
@@ -105,7 +105,7 @@ public class ServiceEstudante {
         estudante.toString();
     }
 
-    private Estudante getEstudante(int id) {
+    private Estudante getEstudante(Long id) {
         return repositoryEstudante.findElementById(id);
     }
 
