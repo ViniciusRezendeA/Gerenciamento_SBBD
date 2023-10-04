@@ -65,22 +65,29 @@ public abstract class Pessoa {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Pessoa)) {
-            return false;
-        }
-        Pessoa pessoa = (Pessoa) o;
-        return Objects.equals(id, pessoa.id) && Objects.equals(codigoDePesoa, pessoa.codigoDePesoa)
-                && Objects.equals(nome, pessoa.nome) && Objects.equals(dataNascimento, pessoa.dataNascimento);
-    }
-
-    @Override
     public int hashCode() {
-        return Objects.hash(id, codigoDePesoa, nome, dataNascimento);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Pessoa other = (Pessoa) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+    
     @Override
     public String toString() {
         return "{" +

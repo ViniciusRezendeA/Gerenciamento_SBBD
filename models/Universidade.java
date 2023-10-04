@@ -34,18 +34,6 @@ public class Universidade extends Instituicao{
         this.cursos.add(curso);
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Universidade)) {
-            return false;
-        }
-        Universidade universidade = (Universidade) o;
-        return Objects.equals(reitor, universidade.reitor) && Objects.equals(cursos, universidade.cursos);
-    }
-
     @Override
     public String toString() {
         return super.toString() + 

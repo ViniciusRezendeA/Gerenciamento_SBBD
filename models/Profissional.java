@@ -29,18 +29,6 @@ public class Profissional extends Pessoa {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Profissional)) {
-            return false;
-        }
-        Profissional profissional = (Profissional) o;
-        return Objects.equals(salario, profissional.salario);
-    }
-
-
-    @Override
     public String toString() {
         return super.toString() +
             " salario='" + getSalario() + "'" +

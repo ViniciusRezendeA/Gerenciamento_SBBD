@@ -49,21 +49,26 @@ public class Trabalho {
         this.apresentacao = apresentacao;
     }
 
-
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Trabalho)) {
-            return false;
-        }
-        Trabalho trabalho = (Trabalho) o;
-        return id == trabalho.id && Objects.equals(tituto, trabalho.tituto) && Objects.equals(resumo, trabalho.resumo) && Objects.equals(apresentacao, trabalho.apresentacao);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, tituto, resumo, apresentacao);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Trabalho other = (Trabalho) obj;
+        if (id != other.id)
+            return false;
+        return true;
     }
 
     @Override

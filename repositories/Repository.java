@@ -15,32 +15,29 @@ public abstract class Repository<T> {
     public abstract T findElementById(int id);
 
     public List<T> findAllElements() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addElement'");
+        return list;
     }
 
-    public boolean updateElement(T element) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addElement'");
-
+    public boolean updateElement(int id, T element) {
+        for(int i = 0; i < list.size(); i++) {
+            if(list.get(i).id == id)
+            {
+                
+            }
+        }
+        list.set(id, element);
     }
 
     public boolean deleteElement(T element) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addElement'");
-
+        return list.remove(element);
     }
 
     public boolean addElement(T element) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addElement'");
-
+        return list.add(element);
     }
 
     public int getAmountOfElements() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addElement'");
-
+        return list.size();
     }
 
 }

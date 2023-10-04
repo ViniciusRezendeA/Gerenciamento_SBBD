@@ -1,5 +1,4 @@
 package models;
-import java.util.Objects;
 
 public class Empresa extends Instituicao{
     private String ramo;
@@ -22,17 +21,6 @@ public class Empresa extends Instituicao{
     public Empresa ramo(String ramo) {
         setRamo(ramo);
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Empresa)) {
-            return false;
-        }
-        Empresa empresa = (Empresa) o;
-        return Objects.equals(ramo, empresa.ramo);
     }
 
     @Override

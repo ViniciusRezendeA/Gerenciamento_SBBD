@@ -34,22 +34,6 @@ public class Professor extends Pessoa{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Professor)) {
-            return false;
-        }
-        Professor professor = (Professor) o;
-        return Objects.equals(departamento, professor.departamento) && Objects.equals(salario, professor.salario);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(departamento, salario);
-    }
-
-    @Override
     public String toString() {
         return "{" +
             " departamento='" + getDepartamento() + "'" +

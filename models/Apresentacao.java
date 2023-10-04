@@ -2,7 +2,6 @@ package models;
 
 import java.sql.Time;
 import java.util.List;
-import java.util.Objects;
 
 public class Apresentacao {
     private Long id;
@@ -64,21 +63,34 @@ public class Apresentacao {
         this.duracaoApresentacao = duracaoApresentacao;
     }
     
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Apresentacao)) {
-            return false;
-        }
-        Apresentacao apresentacao = (Apresentacao) o;
-        return Objects.equals(id, apresentacao.id) && Objects.equals(horaApresentacao, apresentacao.horaApresentacao) && Objects.equals(duracaoApresentacao, apresentacao.duracaoApresentacao);
-    }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, horaApresentacao, duracaoApresentacao);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Apresentacao other = (Apresentacao) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
 
     @Override
     public String toString() {

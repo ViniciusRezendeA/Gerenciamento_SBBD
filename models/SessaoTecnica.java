@@ -3,7 +3,6 @@ package models;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
-import java.util.Objects;
 
 public class SessaoTecnica {
     private Long id;
@@ -108,24 +107,28 @@ public class SessaoTecnica {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof SessaoTecnica)) {
-            return false;
-        }
-        SessaoTecnica sessaoTecnica = (SessaoTecnica) o;
-        return Objects.equals(id, sessaoTecnica.id) && Objects.equals(data, sessaoTecnica.data)
-                && Objects.equals(horaInicio, sessaoTecnica.horaInicio)
-                && Objects.equals(horaFim, sessaoTecnica.horaFim) && Objects.equals(local, sessaoTecnica.local)
-                && Objects.equals(mediador, sessaoTecnica.mediador)
-                && Objects.equals(participantes, sessaoTecnica.participantes)
-                && Objects.equals(apresentacao, sessaoTecnica.apresentacao) && Objects.equals(sala, sessaoTecnica.sala);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, data, horaInicio, horaFim, local, mediador, participantes, apresentacao, sala);
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        SessaoTecnica other = (SessaoTecnica) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 
     @Override
