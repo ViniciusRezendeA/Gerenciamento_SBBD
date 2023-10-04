@@ -3,7 +3,7 @@ package models;
 import java.time.LocalDate;
 
 public abstract class Pessoa {
-    protected long id;
+    protected Long id;
     protected Long codigoDePesoa;
     protected String nome;
     protected LocalDate dataNascimento;
