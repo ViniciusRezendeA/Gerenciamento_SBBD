@@ -11,7 +11,6 @@ import repositories.RepositoryEstudante;
 public class ServiceEstudante extends ServicePessoa implements IService {
 
     private RepositoryEstudante repositoryEstudante = RepositoryEstudante.getInstance();
-    
 
     public void menuInicial() {
         int optionInt = 0;
