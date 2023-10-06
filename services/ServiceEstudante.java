@@ -73,6 +73,7 @@ public class ServiceEstudante extends ServicePessoa implements IService {
                 optionInt = 0;
             }
         } while (optionInt != 6);
+        scan.close();
     }
 
     public void register() {
