@@ -1,7 +1,7 @@
 package models;
 
 public class Trabalho {
- private int id;
+ private Long id;
  private String tituto;
  private String resumo;
  private Apresentacao apresentacao;
@@ -9,18 +9,18 @@ public class Trabalho {
     public Trabalho() {
     }
 
-    public Trabalho(int id, String tituto, String resumo, Apresentacao apresentacao) {
+    public Trabalho(Long id, String tituto, String resumo, Apresentacao apresentacao) {
         this.id = id;
         this.tituto = tituto;
         this.resumo = resumo;
         this.apresentacao = apresentacao;
     }
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,11 +48,13 @@ public class Trabalho {
         this.apresentacao = apresentacao;
     }
 
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + id;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
 
@@ -65,7 +67,10 @@ public class Trabalho {
         if (getClass() != obj.getClass())
             return false;
         Trabalho other = (Trabalho) obj;
-        if (id != other.id)
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
             return false;
         return true;
     }
