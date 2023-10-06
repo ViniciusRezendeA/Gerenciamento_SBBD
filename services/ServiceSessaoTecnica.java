@@ -219,11 +219,13 @@ public class ServiceSessaoTecnica implements IService {
         System.out.println("Informe o id do professor mediador: ");
         Long mediadorId = scan.nextLong();
         System.out.println("Informe os ids dos participantes (informe todos em uma mesma linha): ");
+        scan.nextLine();
         String[] participantesIds = scan.nextLine().split(" ");
         System.out.println("Informe o id da apresentação: ");
         Long apresentacaoId = scan.nextLong();
         System.out.println("Informe o id da sala: ");
         Long salaId = scan.nextLong();
+
 
         newSessoesTecnicas.setData(data);
         newSessoesTecnicas.setHoraFim(horarioFim);

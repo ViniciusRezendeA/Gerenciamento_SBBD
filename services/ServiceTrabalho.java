@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import models.Trabalho;
+import repositories.RepositoryApresentacao;
+import repositories.RepositoryProfessor;
+import repositories.RepositorySala;
 import repositories.RepositoryTrabalho;
 import util.Utils;
 
@@ -41,7 +44,13 @@ public class ServiceTrabalho implements IService {
 
             switch (optionInt) {
                 case 1:
-                    register();
+                    if (RepositoryApresentacao.getInstance().findAllElements().isEmpty()) {
+                        System.out.println("Para cadastrar um Trabalho é preciso antes cadastrar ao menos uma apresentação!");
+
+                    } else {
+                        register();
+                    }
+                    
                     break;
 
                 case 2:
@@ -173,10 +182,14 @@ public class ServiceTrabalho implements IService {
         System.out.println("Informe o resumo do trabalho: ");
         String resumo = scan.nextLine();
 
+        System.out.println("Informe o id da apresentação: ");
+        Long apresentacaoId = scan.nextLong();
+
         newTrabalho.setTituto(titulo);
         newTrabalho.setResumo(resumo);
+        newTrabalho.setApresentacao(RepositoryApresentacao.getInstance().findElementById(apresentacaoId));
 
         return newTrabalho;
     }
-    
+
 }
