@@ -2,11 +2,7 @@ package services;
 
 import util.Utils;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Scanner;
-
-import javax.naming.ldap.LdapName;
 
 import models.Estudante;
 import models.Instituicao;
@@ -95,7 +91,7 @@ public class ServiceEstudante extends ServicePessoa {
         System.out.println("Informe o curso do " + newEstudante.getNome());
         newEstudante.setCurso(scan.nextLine());
         setInstituicao(newEstudante);
-        
+
         return newEstudante;
     }
 

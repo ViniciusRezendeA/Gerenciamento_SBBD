@@ -3,7 +3,6 @@ package services;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import models.Estudante;
 import models.Pessoa;
 
 public class ServicePessoa {
