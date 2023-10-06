@@ -14,11 +14,11 @@ import repositories.RepositoryEmpresa;
 import repositories.RepositoryEstudante;
 import repositories.RepositoryUniversidade;
 
-public class ServiceEstudante {
+public class ServiceEstudante extends ServicePessoa {
+
     private RepositoryEstudante repositoryEstudante = RepositoryEstudante.getInstance();
     private RepositoryEmpresa repositoryEmpresa = RepositoryEmpresa.getInstance();
     private RepositoryUniversidade repositoryUniversidade = RepositoryUniversidade.getInstance();
-    private Scanner scan = new Scanner(System.in);
 
     public void menuInicial() {
         int optionInt = 0;
@@ -87,18 +87,15 @@ public class ServiceEstudante {
     }
 
     private Estudante getEstudanteInfo() {
+
         Estudante newEstudante = new Estudante();
         Utils.clearTerminal();
-
+        getPessoaInfo(newEstudante);
         newEstudante.setId(Long.valueOf(repositoryEstudante.getAmountOfElements() + 1));
-        newEstudante.setCodigoDePesoa(newEstudante.getId());
-        System.out.println("Informe o nome do Estudante");
-        newEstudante.setNome(scan.nextLine());
-        System.out.println("Informe a data de nascimento do " + newEstudante.getNome() + ", no formato de AAAA-MM-DD");
-        newEstudante.setDataNascimento(LocalDate.parse(scan.nextLine()));
         System.out.println("Informe o curso do " + newEstudante.getNome());
         newEstudante.setCurso(scan.nextLine());
         setInstituicao(newEstudante);
+        
         return newEstudante;
     }
 
