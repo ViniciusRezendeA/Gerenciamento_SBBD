@@ -1,10 +1,10 @@
 package services;
 
-import java.sql.Date;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,7 +52,15 @@ public class ServiceSessaoTecnica implements IService {
 
             switch (optionInt) {
                 case 1:
-                    register();
+                    if (RepositoryProfessor.getInstance().findAllElements().isEmpty() || 
+                        RepositoryApresentacao.getInstance().findAllElements().isEmpty() ||
+                        RepositorySala.getInstance().findAllElements().isEmpty()) {
+                        System.out.println("Para cadastrar uma Sessão Tecnica é preciso antes cadastrar ao menos um professor, uma sala e uma apresentação!");
+
+                    } else {
+                        register();
+                    }
+
                     break;
 
                 case 2:
@@ -192,14 +200,16 @@ public class ServiceSessaoTecnica implements IService {
         System.out.println("Informe o horario de inicio no formato (HH:mm): ");
         Time horarioInicio = null;
         try {
-            horarioInicio = (Time) sdf.parse(scan.nextLine());
+            Date aux = sdfTime.parse(scan.nextLine());
+            horarioInicio = new Time(aux.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         System.out.println("Informe o horario de termino no formato (HH:mm): ");
         Time horarioFim = null;
         try {
-            horarioFim = (Time) sdfTime.parse(scan.nextLine());
+            Date aux = sdfTime.parse(scan.nextLine());
+            horarioFim = new Time(aux.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -226,19 +236,19 @@ public class ServiceSessaoTecnica implements IService {
 
         List<Pessoa> participantesList = new ArrayList<>();
 
-        for(int i =0; i< participantesIds.length;i++) {
+        for (int i = 0; i < participantesIds.length; i++) {
             Pessoa buffer = null;
 
             buffer = RepositoryProfessor.getInstance().findElementById(Long.parseLong(participantesIds[i]));
 
-            if(buffer == null)
+            if (buffer == null)
                 buffer = RepositoryEstudante.getInstance().findElementById(Long.parseLong(participantesIds[i]));
 
-            if(buffer == null)
+            if (buffer == null)
                 buffer = RepositoryProfissional.getInstance().findElementById(Long.parseLong(participantesIds[i]));
 
             participantesList.add(buffer);
-        
+
         }
 
         newSessoesTecnicas.setParticipantes(participantesList);
