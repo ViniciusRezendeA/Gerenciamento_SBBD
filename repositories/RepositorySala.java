@@ -30,6 +30,8 @@ public class RepositorySala extends Repository<Sala> {
     }
         @Override
     public Long getLastIndex() {
+        if(list.isEmpty())
+            return 1L;
         return list.get(list.size()-1).getId();
     }
 }

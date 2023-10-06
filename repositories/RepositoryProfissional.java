@@ -30,6 +30,8 @@ public class RepositoryProfissional extends Repository<Profissional> {
     }
     @Override
     public Long getLastIndex() {
+        if(list.isEmpty())
+            return 1L;
         return list.get(list.size()-1).getId();
     }
 }
