@@ -40,18 +40,13 @@ public class Utils {
         clearTerminal();
         System.out.println("Opção inválida!");
         System.out.println("Pressione enter para continuar...");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    
     }
 
     /**
      * @param title title string to be displayed
      */
     public static void printMenuTitle(String title) {
-        clearTerminal();
         printDynamicLine();
         int totalWidth = 80;
         int paddingSize = (totalWidth - title.length()) / 2;
