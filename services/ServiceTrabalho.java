@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import models.Trabalho;
-import repositories.RepositoryTr
-import repositories.RepositoryTrabalho;aRepositoryTrabalho;
+import repositories.RepositoryTrabalho;
 import util.Utils;
 
 public class ServiceTrabalho implements IService {
@@ -71,7 +70,7 @@ public class ServiceTrabalho implements IService {
 
     @Override
     public void register() {
-        RepositoryTrabalho.getInstance().addElement(getSalaInfo());
+        RepositoryTrabalho.getInstance().addElement(getTrabalhoInfo());
     }
 
     @Override
@@ -86,7 +85,7 @@ public class ServiceTrabalho implements IService {
             if (trabalho == null) {
                 System.out.println("Trabalho não encontrado");
             } else {
-                Trabalho newTrabalho = getSalaInfo();
+                Trabalho newTrabalho = getTrabalhoInfo();
                 newTrabalho.setId(trabalho.getId());
 
                 Boolean result = RepositoryTrabalho.getInstance().updateElement(optionLong, newTrabalho);
@@ -179,4 +178,5 @@ public class ServiceTrabalho implements IService {
 
         return newTrabalho;
     }
+    
 }
