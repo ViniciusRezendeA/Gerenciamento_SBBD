@@ -1,5 +1,4 @@
 package models;
-import java.util.Objects;
 
 public class Profissional extends Pessoa {
     private Double salario;

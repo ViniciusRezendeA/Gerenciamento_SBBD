@@ -2,7 +2,6 @@ package models;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Objects;
 
 public class MiniCurso{
     private Long id;
