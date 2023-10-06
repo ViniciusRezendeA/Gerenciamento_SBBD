@@ -45,14 +45,14 @@ public class ServiceEstudante {
                 break;
 
             case 3:
-
+                updateEstudante();
                 break;
 
             case 4:
                 buscarEstudante();
                 break;
             case 5:
-
+                mostrarTodosEstudantes();
                 break;
 
             default:
@@ -61,6 +61,10 @@ public class ServiceEstudante {
     }
 
     private void cadastrarEstudande() {
+        repositoryEstudante.addElement(getEstudanteInfo());
+    }
+
+    private Estudante getEstudanteInfo() {
         Estudante newEstudante = new Estudante();
         Utils.clearTerminal();
 
@@ -70,39 +74,80 @@ public class ServiceEstudante {
         newEstudante.setNome(scan.nextLine());
         System.out.println("Informe a data de nascimento do " + newEstudante.getNome());
         newEstudante.setDataNascimento(LocalDate.parse(scan.nextLine()));
-         System.out.println("Informe o curso do " + newEstudante.getNome());
+        System.out.println("Informe o curso do " + newEstudante.getNome());
         newEstudante.setCurso(scan.nextLine());
-        repositoryEstudante.addElement(newEstudante);
+        return newEstudante;
     }
 
     private void deletarEstudante() {
         Utils.clearTerminal();
         System.out.println("Informe o id do Estudante");
         String option = scan.nextLine();
-        Long optionLong = 0L;
+        Long optionLong = Long.parseLong("0");
         try {
             optionLong = Long.parseLong(option);
+            Estudante estudante = getEstudante(optionLong);
+            if (estudante == null) {
+                System.out.println("Estudante não encontrado");
+            } else {
+                Boolean result = repositoryEstudante.deleteElement(getEstudanteInfo());
+                if (result) {
+                    System.out.println("Estudante Deletado com sucesso");
+                } else {
+                    System.out.println("Problema no Sistema, tente novamente mais tarde!");
+                }
+            }
+
         } catch (Exception e) {
             Utils.invalidOption();
             deletarEstudante();
         }
-        Estudante estudante = getEstudante(optionLong);
-        repositoryEstudante.deleteElement(estudante);
+
+    }
+
+    private void updateEstudante() {
+        Utils.clearTerminal();
+        System.out.println("Informe o id do Estudante");
+        String option = scan.nextLine();
+        Long optionLong = Long.parseLong("0");
+        try {
+            optionLong = Long.parseLong(option);
+            Estudante estudante = getEstudante(optionLong);
+            if (estudante == null) {
+                System.out.println("Estudante não encontrado");
+            } else {
+                Boolean result = repositoryEstudante.updateElement(optionLong, getEstudanteInfo());
+                if (result) {
+                    System.out.println("Estudante Atualizado com sucesso");
+                } else {
+                    System.out.println("Problema no Sistema, tente novamente mais tarde!");
+                }
+            }
+        } catch (Exception e) {
+            Utils.invalidOption();
+            updateEstudante();
+        }
+
     }
 
     private void buscarEstudante() {
         Utils.clearTerminal();
         System.out.println("Informe o id do Estudante");
         String option = scan.nextLine();
-        Long optionInt = 0L;
+        Long optionLong = Long.parseLong("0");
         try {
-            optionInt = Long.parseLong(option);
+            optionLong = Long.parseLong(option);
+            Estudante estudante = getEstudante(optionLong);
+            if (estudante == null) {
+                System.out.println("Estudante não encontrado");
+            } else {
+                estudante.toString();
+            }
         } catch (Exception e) {
             Utils.invalidOption();
             buscarEstudante();
         }
-        Estudante estudante = getEstudante(optionInt);
-        estudante.toString();
+
     }
 
     private Estudante getEstudante(Long id) {
