@@ -7,7 +7,7 @@ import repositories.RepositoryUniversidade;
 import util.Utils;
 
 public class ServiceUniversidade extends ServiceInstituicao implements IService {
-    
+
     public void menuInicial() {
         int optionInt = 0;
 
@@ -85,10 +85,10 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
             Utils.clearTerminal();
             System.out.println("Informe o curso desejado(para sair escrava finalizar)");
             cargo = scan.nextLine();
-            if (cargo.toLowerCase() != "finalizar") {
+            if (!cargo.toLowerCase().equals("finalizar")) {
                 universidade.addCargos(cargo);
             }
-        } while (cargo.toLowerCase() != "finalizar");
+        } while (!cargo.toLowerCase().equals("finalizar"));
     }
 
     public void delete() {
@@ -183,3 +183,6 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
 
     }
 }
+
+
+//CURSOS UNIVERSIDADE

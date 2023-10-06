@@ -22,9 +22,9 @@ public class ServiceInstituicao {
             Utils.clearTerminal();
             System.out.println("Informe o cargo desejado(para sair escrava finalizar)");
             cargo = scan.nextLine();
-            if (cargo.toLowerCase() != "finalizar") {
+            if (!cargo.toLowerCase().equals("finalizar")) {
                 instituicao.addCargos(cargo);
             }
-        } while (cargo.toLowerCase() != "finalizar");
+        } while (!cargo.toLowerCase().equals("finalizar"));
     }
 }

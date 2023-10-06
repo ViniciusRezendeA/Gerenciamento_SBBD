@@ -31,7 +31,7 @@ public class RepositoryProfessor extends Repository<Professor> {
     @Override
     public Long getLastIndex() {
         if(list.isEmpty())
-            return 1L;
+            return 0L;
         return list.get(list.size()-1).getId();
     }
 }

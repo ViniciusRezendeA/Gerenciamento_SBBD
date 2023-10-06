@@ -1,6 +1,6 @@
 package services;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -178,21 +178,23 @@ public class ServiceMiniCurso implements IService {
         System.out.println("Informe a data no formato (yyyy-MM-dd): ");
         Date data = null;
         try {
-            data = (Date) sdf.parse(scan.nextLine());
+            data = sdf.parse(scan.nextLine());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         System.out.println("Informe o horario de inicio no formato (HH:mm): ");
         Time horarioInicio = null;
         try {
-            horarioInicio = (Time) sdf.parse(scan.nextLine());
+            Date aux = sdfTime.parse(scan.nextLine());
+            horarioInicio = new Time(aux.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
         System.out.println("Informe o horario de termino no formato (HH:mm): ");
         Time horarioFim = null;
         try {
-            horarioFim = (Time) sdfTime.parse(scan.nextLine());
+             Date aux = sdfTime.parse(scan.nextLine());
+            horarioFim = new Time(aux.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }

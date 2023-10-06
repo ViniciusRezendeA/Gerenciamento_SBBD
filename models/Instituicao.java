@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Instituicao {
@@ -9,7 +10,9 @@ public abstract class Instituicao {
     protected List<String> cargos;
 
     public Instituicao() {
+        cargos = new ArrayList<>();
     }
+    
 
     public Instituicao(Long id, String cnpj, String nome, List<String> cargos) {
         this.id = id;

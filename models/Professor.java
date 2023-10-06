@@ -34,10 +34,9 @@ public class Professor extends Pessoa{
 
     @Override
     public String toString() {
-        return "{" +
-            " departamento='" + getDepartamento() + "'" +
-            ", salario='" + getSalario() + "'" +
-            "}";
+        return super.toString() + " Professor [departamento=" + departamento + ", salario=" + salario + "]";
     }
+
+
     
 }
