@@ -3,15 +3,12 @@ package repositories;
 import java.util.List;
 
 public abstract class Repository<T> {
-
-    Repository<T> singleton;
     List<T> list;
 
     public Repository(List<T> list) {
-        this.singleton = this;
         this.list = list;
     }
-
+    
     public abstract T findElementById(Long id);
 
     public List<T> findAllElements() {

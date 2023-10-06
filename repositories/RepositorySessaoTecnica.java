@@ -1,12 +1,21 @@
 package repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.SessaoTecnica;
 
 public class RepositorySessaoTecnica extends Repository<SessaoTecnica> {
+    private static RepositorySessaoTecnica singleton;
 
     public RepositorySessaoTecnica(List<SessaoTecnica> list) {
         super(list);
+    }
+
+    public static RepositorySessaoTecnica getInstance() {
+        if(singleton == null)
+            singleton = new RepositorySessaoTecnica(new ArrayList<>());
+
+        return singleton;
     }
 
     @Override

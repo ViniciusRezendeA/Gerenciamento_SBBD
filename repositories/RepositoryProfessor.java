@@ -1,12 +1,21 @@
 package repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.Professor;
 
 public class RepositoryProfessor extends Repository<Professor> {
+    private static RepositoryProfessor singleton;
 
     public RepositoryProfessor(List<Professor> list) {
         super(list);
+    }
+
+    public static RepositoryProfessor getInstance() {
+        if(singleton == null)
+            singleton = new RepositoryProfessor(new ArrayList<>());
+
+        return singleton;
     }
 
         @Override
