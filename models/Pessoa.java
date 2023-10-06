@@ -8,11 +8,13 @@ public abstract class Pessoa {
     protected String nome;
     protected LocalDate dataNascimento;
     protected Instituicao instituicao;
+
     public void inscreverSessaoTecnica(SessaoTecnica sessao) {
-
+        sessao.addParticipante(this);
     }
-     public void desinscreverSessaoTecnica(SessaoTecnica sessao) {
 
+    public void desinscreverSessaoTecnica(SessaoTecnica sessao) {
+        sessao.removeParticipante(this);
     }
 
     public Pessoa() {
@@ -56,10 +58,12 @@ public abstract class Pessoa {
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    public void setInstituicao(Instituicao instituicao){
+
+    public void setInstituicao(Instituicao instituicao) {
         this.instituicao = instituicao;
     }
-    public Instituicao getInstituicao(){
+
+    public Instituicao getInstituicao() {
         return this.instituicao;
     }
 
@@ -70,6 +74,7 @@ public abstract class Pessoa {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -86,7 +91,7 @@ public abstract class Pessoa {
             return false;
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "{" +
