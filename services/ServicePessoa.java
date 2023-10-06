@@ -4,9 +4,12 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import models.Pessoa;
+import repositories.RepositoryEmpresa;
+import repositories.RepositoryUniversidade;
 
 public class ServicePessoa {
-
+    protected RepositoryEmpresa repositoryEmpresa = RepositoryEmpresa.getInstance();
+    protected RepositoryUniversidade repositoryUniversidade = RepositoryUniversidade.getInstance();
     protected Scanner scan = new Scanner(System.in);
 
     public void getPessoaInfo(Pessoa pessoa) {

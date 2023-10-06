@@ -90,6 +90,12 @@ public class SessaoTecnica {
         this.participantes = participantes;
     }
 
+      public void addParticipante(Pessoa participante) {
+        this.participantes.add(participante);
+    }
+      public void removeParticipante(Pessoa participante) {
+        this.participantes.remove(participante);
+    }
     public Apresentacao getApresentacao() {
         return this.apresentacao;
     }
