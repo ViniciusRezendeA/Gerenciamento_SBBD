@@ -2,12 +2,12 @@ package services;
 
 import java.util.List;
 
-import models.Professor;
-import repositories.RepositoryProfessor;
+import models.Profissional;
+import repositories.RepositoryProfissional;
 import util.Utils;
 
-public class ServiceProfessor extends ServicePessoa implements IService {
-    private RepositoryProfessor repositoryProfessor = RepositoryProfessor.getInstance();
+public class ServiceProfissional extends ServicePessoa implements IService {
+    private RepositoryProfissional repositoryProfissional = RepositoryProfissional.getInstance();
 
 
     public void menuInicial() {
@@ -16,12 +16,12 @@ public class ServiceProfessor extends ServicePessoa implements IService {
         do {
             if (scan.nextLine() == "\n" || optionInt == 0) {
                 Utils.clearTerminal();
-                Utils.printMenuTitle("Menu do Professor");
-                System.out.println("1 - cadastrar Professor");
-                System.out.println("2 - Deletar Professor");
-                System.out.println("3 - atualizar Professor");
-                System.out.println("4- Buscar Professor");
-                System.out.println("5 - Mostrar todos os Professors");
+                Utils.printMenuTitle("Menu do Profissional");
+                System.out.println("1 - cadastrar Profissional");
+                System.out.println("2 - Deletar Profissional");
+                System.out.println("3 - atualizar Profissional");
+                System.out.println("4- Buscar Profissional");
+                System.out.println("5 - Mostrar todos os Profissionals");
                 System.out.println("6 - Voltar para o menu principal");
             }
 
@@ -73,44 +73,42 @@ public class ServiceProfessor extends ServicePessoa implements IService {
     }
 
     public void register() {
-        repositoryProfessor.addElement(getProfessorInfo());
+        repositoryProfissional.addElement(getProfissionalInfo());
     }
 
-    private Professor getProfessorInfo() {
-        Professor newProfessor = new Professor();
-        newProfessor.setId(Long.valueOf((repositoryProfessor.getAmountOfElements() + 1)));
-        getPessoaInfo(newProfessor);
-        System.out.println("Informe o nome do Departamento");
-        newProfessor.setDepartamento(scan.nextLine());
-        newProfessor.setSalario(getSalario(newProfessor));
-        return newProfessor;
+    private Profissional getProfissionalInfo() {
+        Profissional newProfissional = new Profissional();
+        newProfissional.setId(Long.valueOf((repositoryProfissional.getAmountOfElements() + 1)));
+        getPessoaInfo(newProfissional);
+        newProfissional.setSalario(getSalario(newProfissional));
+        return newProfissional;
     }
 
-    private Double getSalario(Professor newProfessor) {
-        System.out.println("Informe o salario do " + newProfessor.getNome());
+    private Double getSalario(Profissional newProfissional) {
+        System.out.println("Informe o salario do " + newProfissional.getNome());
         try {
             return Double.parseDouble(scan.nextLine());
         } catch (Exception e) {
             System.out.println("Opção inválida!");
-            getSalario(newProfessor);
+            getSalario(newProfissional);
             return null;
         }
     }
 
     public void delete() {
         Utils.clearTerminal();
-        System.out.println("Informe o id do Professor");
+        System.out.println("Informe o id do Profissional");
         String option = scan.nextLine();
         Long optionLong = Long.parseLong("0");
         try {
             optionLong = Long.parseLong(option);
-            Professor Professor = getProfessor(optionLong);
-            if (Professor == null) {
-                System.out.println("Professor não encontrado");
+            Profissional Profissional = getProfissional(optionLong);
+            if (Profissional == null) {
+                System.out.println("Profissional não encontrado");
             } else {
-                Boolean result = repositoryProfessor.deleteElement(Professor);
+                Boolean result = repositoryProfissional.deleteElement(Profissional);
                 if (result) {
-                    System.out.println("Professor Deletado com sucesso");
+                    System.out.println("Profissional Deletado com sucesso");
                 } else {
                     System.out.println("Problema no Sistema, tente novamente mais tarde!");
                 }
@@ -126,22 +124,22 @@ public class ServiceProfessor extends ServicePessoa implements IService {
 
     public void update() {
         Utils.clearTerminal();
-        System.out.println("Informe o id do Professor");
+        System.out.println("Informe o id do Profissional");
         String option = scan.nextLine();
         Long optionLong = Long.parseLong("0");
         try {
             optionLong = Long.parseLong(option);
-            Professor Professor = getProfessor(optionLong);
-            if (Professor == null) {
-                System.out.println("Professor não encontrado");
+            Profissional Profissional = getProfissional(optionLong);
+            if (Profissional == null) {
+                System.out.println("Profissional não encontrado");
             } else {
-                Professor newProfessor = getProfessorInfo();
-                newProfessor.setId(Professor.getId());
-                newProfessor.setCodigoDePesoa(Professor.getCodigoDePesoa());
+                Profissional newProfissional = getProfissionalInfo();
+                newProfissional.setId(Profissional.getId());
+                newProfissional.setCodigoDePesoa(Profissional.getCodigoDePesoa());
 
-                Boolean result = repositoryProfessor.updateElement(optionLong, newProfessor);
+                Boolean result = repositoryProfissional.updateElement(optionLong, newProfissional);
                 if (result) {
-                    System.out.println("Professor Atualizado com sucesso");
+                    System.out.println("Profissional Atualizado com sucesso");
                 } else {
                     System.out.println("Problema no Sistema, tente novamente mais tarde!");
                 }
@@ -156,16 +154,16 @@ public class ServiceProfessor extends ServicePessoa implements IService {
 
     public void querryById() {
         Utils.clearTerminal();
-        System.out.println("Informe o id do Professor");
+        System.out.println("Informe o id do Profissional");
         String option = scan.nextLine();
         Long optionLong = Long.parseLong("0");
         try {
             optionLong = Long.parseLong(option);
-            Professor Professor = getProfessor(optionLong);
-            if (Professor == null) {
-                System.out.println("Professor não encontrado");
+            Profissional Profissional = getProfissional(optionLong);
+            if (Profissional == null) {
+                System.out.println("Profissional não encontrado");
             } else {
-                System.out.println(Professor.toString());
+                System.out.println(Profissional.toString());
             }
 
         } catch (Exception e) {
@@ -175,17 +173,17 @@ public class ServiceProfessor extends ServicePessoa implements IService {
 
     }
 
-    private Professor getProfessor(Long id) {
-        return repositoryProfessor.findElementById(id);
+    private Profissional getProfissional(Long id) {
+        return repositoryProfissional.findElementById(id);
     }
 
     public void querryAll() {
-        List<Professor> Professors = repositoryProfessor.findAllElements();
-        if (Professors.isEmpty()) {
-            System.out.println("Nenhum Professor cadastrado!");
+        List<Profissional> Profissionals = repositoryProfissional.findAllElements();
+        if (Profissionals.isEmpty()) {
+            System.out.println("Nenhum Profissional cadastrado!");
         } else {
-            Professors.forEach(Professor -> {
-                System.out.println(Professor.toString());
+            Profissionals.forEach(Profissional -> {
+                System.out.println(Profissional.toString());
             });
         }
 

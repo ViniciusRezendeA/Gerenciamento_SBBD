@@ -6,15 +6,12 @@ import java.util.List;
 
 import models.Estudante;
 import models.Instituicao;
-import repositories.RepositoryEmpresa;
 import repositories.RepositoryEstudante;
-import repositories.RepositoryUniversidade;
 
 public class ServiceEstudante extends ServicePessoa implements IService {
 
     private RepositoryEstudante repositoryEstudante = RepositoryEstudante.getInstance();
-    private RepositoryEmpresa repositoryEmpresa = RepositoryEmpresa.getInstance();
-    private RepositoryUniversidade repositoryUniversidade = RepositoryUniversidade.getInstance();
+    
 
     public void menuInicial() {
         int optionInt = 0;
