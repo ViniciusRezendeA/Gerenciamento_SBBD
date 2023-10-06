@@ -99,6 +99,6 @@ public class ServiceSBBD {
                 optionInt = 0;
             }
         } while (optionInt != 11);
-        scan.close();
+       
     }
 }

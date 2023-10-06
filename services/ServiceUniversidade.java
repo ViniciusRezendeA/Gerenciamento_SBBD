@@ -63,7 +63,6 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
                 optionInt = 0;
             }
         } while (optionInt != 6);
-        scan.close();
     }
 
     public void register() {
