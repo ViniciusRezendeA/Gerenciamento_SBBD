@@ -3,6 +3,7 @@ package services;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -176,14 +177,18 @@ public class ServiceApresentacao implements IService {
         System.out.println("Informe a hora da apresentacao no fomato (HH:mm): ");
         Time horaApresentacao = null;
         try {
-            horaApresentacao = (Time) sdf.parse(scan.nextLine());
+            Date aux = sdf.parse(scan.nextLine());
+            horaApresentacao = new Time(aux.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
         System.out.println("Informe a duração da apresentação no fomato (HH:mm): ");
         Time duracaoApresentacao = null;
         try {
-            duracaoApresentacao = (Time) sdf.parse(scan.nextLine());
+            Date aux = sdf.parse(scan.nextLine());
+            duracaoApresentacao = new Time(aux.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
         }

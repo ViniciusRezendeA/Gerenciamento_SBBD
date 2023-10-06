@@ -206,13 +206,6 @@ public class ServiceSessaoTecnica implements IService {
         System.out.println("Informe o local da Sessao: ");
         String local = scan.nextLine();
 
-        /*
-         * private Professor mediador;
-         * private List<Pessoa> participantes;
-         * private Apresentacao apresentacao;
-         * private Sala sala;
-         */
-
         System.out.println("Informe o id do professor mediador: ");
         Long mediadorId = scan.nextLong();
         System.out.println("Informe os ids dos participantes (informe todos em uma mesma linha): ");
