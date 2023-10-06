@@ -28,5 +28,8 @@ public class RepositorySessaoTecnica extends Repository<SessaoTecnica> {
 
         return null;
     }
-    
+        @Override
+    public Long getLastIndex() {
+        return list.get(list.size()-1).getId();
+    }
 }

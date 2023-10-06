@@ -46,7 +46,7 @@ public class ServiceSBBD {
                 System.out.println("Opção inválida!");
                 System.out.println("Pressione enter para continuar...");
             }
-            if (optionInt > 6) {
+            if (optionInt > 11) {
                 System.out.println("Opção inválida!");
                 System.out.println("Pressione enter para continuar...");
             }

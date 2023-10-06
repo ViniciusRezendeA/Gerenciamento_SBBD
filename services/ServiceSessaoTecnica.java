@@ -177,7 +177,7 @@ public class ServiceSessaoTecnica implements IService {
     private SessaoTecnica getSessaoTecnicaInfo() {
         SessaoTecnica newSessoesTecnicas = new SessaoTecnica();
         Utils.clearTerminal();
-        newSessoesTecnicas.setId(Long.valueOf(RepositorySessaoTecnica.getInstance().getAmountOfElements() + 1));
+        newSessoesTecnicas.setId(Long.valueOf(RepositorySessaoTecnica.getInstance().getLastIndex() + 1));
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");

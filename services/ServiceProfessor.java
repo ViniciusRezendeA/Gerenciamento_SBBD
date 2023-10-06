@@ -20,7 +20,7 @@ public class ServiceProfessor extends ServicePessoa implements IService {
                 System.out.println("1 - cadastrar Professor");
                 System.out.println("2 - Deletar Professor");
                 System.out.println("3 - atualizar Professor");
-                System.out.println("4- Buscar Professor");
+                System.out.println("4 - Buscar Professor");
                 System.out.println("5 - Mostrar todos os Professors");
                 System.out.println("6 - Voltar para o menu principal");
             }
@@ -79,7 +79,7 @@ public class ServiceProfessor extends ServicePessoa implements IService {
 
     private Professor getProfessorInfo() {
         Professor newProfessor = new Professor();
-        newProfessor.setId(Long.valueOf((repositoryProfessor.getAmountOfElements() + 1)));
+        newProfessor.setId(Long.valueOf((repositoryProfessor.getLastIndex() + 1)));
         getPessoaInfo(newProfessor);
         System.out.println("Informe o nome do Departamento");
         newProfessor.setDepartamento(scan.nextLine());

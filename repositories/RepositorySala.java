@@ -28,5 +28,8 @@ public class RepositorySala extends Repository<Sala> {
 
         return null;
     }
-    
+        @Override
+    public Long getLastIndex() {
+        return list.get(list.size()-1).getId();
+    }
 }

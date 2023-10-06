@@ -20,7 +20,7 @@ public class ServiceProfissional extends ServicePessoa implements IService {
                 System.out.println("1 - cadastrar Profissional");
                 System.out.println("2 - Deletar Profissional");
                 System.out.println("3 - atualizar Profissional");
-                System.out.println("4- Buscar Profissional");
+                System.out.println("4 - Buscar Profissional");
                 System.out.println("5 - Mostrar todos os Profissionals");
                 System.out.println("6 - Voltar para o menu principal");
             }
@@ -79,7 +79,7 @@ public class ServiceProfissional extends ServicePessoa implements IService {
 
     private Profissional getProfissionalInfo() {
         Profissional newProfissional = new Profissional();
-        newProfissional.setId(Long.valueOf((repositoryProfissional.getAmountOfElements() + 1)));
+        newProfissional.setId(Long.valueOf((repositoryProfissional.getLastIndex() + 1)));
         getPessoaInfo(newProfissional);
         newProfissional.setSalario(getSalario(newProfissional));
         return newProfissional;

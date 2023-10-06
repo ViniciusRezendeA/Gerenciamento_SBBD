@@ -19,7 +19,7 @@ public class ServiceEmpresa extends ServiceInstituicao implements IService {
                 System.out.println("1 - cadastrar Empresa");
                 System.out.println("2 - Deletar Empresa");
                 System.out.println("3 - atualizar Empresa");
-                System.out.println("4- Buscar Empresa");
+                System.out.println("4 - Buscar Empresa");
                 System.out.println("5 - Mostrar todos os Empresas");
                 System.out.println("6 - Voltar para o menu principal");
             }
@@ -73,7 +73,7 @@ public class ServiceEmpresa extends ServiceInstituicao implements IService {
 
     private Empresa getEmpresaInfo() {
         Empresa newEmpresa = new Empresa();
-        newEmpresa.setId(Long.valueOf((repositoryEmpresa.getAmountOfElements() + 1)));
+        newEmpresa.setId(Long.valueOf((repositoryEmpresa.getLastIndex() + 1)));
         getInstituicaoInfo(newEmpresa);
         System.out.println("Informe o ramo");
         newEmpresa.setRamo(scan.nextLine());

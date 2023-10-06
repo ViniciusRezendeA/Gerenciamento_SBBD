@@ -34,8 +34,6 @@ public abstract class Repository<T> {
         return list.add(element);
     }
 
-    public int getAmountOfElements() {
-        return list.size();
-    }
+    public abstract Long getLastIndex();
 
 }

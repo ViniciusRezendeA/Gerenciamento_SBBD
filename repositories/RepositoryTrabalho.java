@@ -29,5 +29,8 @@ public class RepositoryTrabalho extends Repository<Trabalho> {
 
         return null;
     }
-
+    @Override
+    public Long getLastIndex() {
+        return list.get(list.size()-1).getId();
+    }
 }

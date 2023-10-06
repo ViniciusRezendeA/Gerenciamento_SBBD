@@ -19,7 +19,7 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
                 System.out.println("1 - cadastrar Universidade");
                 System.out.println("2 - Deletar Universidade");
                 System.out.println("3 - atualizar Universidade");
-                System.out.println("4- Buscar Universidade");
+                System.out.println("4 - Buscar Universidade");
                 System.out.println("5 - Mostrar todos os Universidades");
                 System.out.println("6 - Voltar para o menu principal");
             }
@@ -73,7 +73,7 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
 
     private Universidade getUniversidadeInfo() {
         Universidade newUniversidade = new Universidade();
-        newUniversidade.setId(Long.valueOf((repositoryUniversidade.getAmountOfElements() + 1)));
+        newUniversidade.setId(Long.valueOf((repositoryUniversidade.getLastIndex() + 1)));
         getInstituicaoInfo(newUniversidade);
         System.out.println("Informe o Reitor");
         newUniversidade.setReitor(scan.nextLine());

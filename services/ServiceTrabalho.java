@@ -166,7 +166,7 @@ public class ServiceTrabalho implements IService {
     private Trabalho getTrabalhoInfo() {
         Trabalho newTrabalho = new Trabalho();
         Utils.clearTerminal();
-        newTrabalho.setId(Long.valueOf(RepositoryTrabalho.getInstance().getAmountOfElements() + 1));
+        newTrabalho.setId(Long.valueOf(RepositoryTrabalho.getInstance().getLastIndex() + 1));
 
         System.out.println("Informe o titulo do trabalho: ");
         String titulo = scan.nextLine();

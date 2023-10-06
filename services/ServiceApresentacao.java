@@ -170,7 +170,7 @@ public class ServiceApresentacao implements IService {
     private Apresentacao getApresentacaoInfo() {
         Apresentacao newApresentacao = new Apresentacao();
         Utils.clearTerminal();
-        newApresentacao.setId(Long.valueOf(RepositoryApresentacao.getInstance().getAmountOfElements() + 1));
+        newApresentacao.setId(Long.valueOf(RepositoryApresentacao.getInstance().getLastIndex() + 1));
 
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 

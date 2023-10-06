@@ -170,7 +170,7 @@ public class ServiceMiniCurso implements IService {
     private MiniCurso getMiniCursoInfo() {
         MiniCurso newMiniCursos = new MiniCurso();
         Utils.clearTerminal();
-        newMiniCursos.setId(Long.valueOf(RepositoryMiniCurso.getInstance().getAmountOfElements() + 1));
+        newMiniCursos.setId(Long.valueOf(RepositoryMiniCurso.getInstance().getLastIndex() + 1));
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");

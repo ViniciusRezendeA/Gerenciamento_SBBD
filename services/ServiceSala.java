@@ -166,7 +166,7 @@ public class ServiceSala implements IService {
     private Sala getSalaInfo() {
         Sala newSala = new Sala();
         Utils.clearTerminal();
-        newSala.setId(Long.valueOf(RepositorySala.getInstance().getAmountOfElements() + 1));
+        newSala.setId(Long.valueOf(RepositorySala.getInstance().getLastIndex() + 1));
 
         System.out.println("Informe o codigo da sala: ");
         int codigo = scan.nextInt();

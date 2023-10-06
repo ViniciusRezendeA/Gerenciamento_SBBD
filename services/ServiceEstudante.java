@@ -22,7 +22,7 @@ public class ServiceEstudante extends ServicePessoa implements IService {
                 System.out.println("1 - cadastrar Estudante");
                 System.out.println("2 - Deletar Estudante");
                 System.out.println("3 - atualizar Estudante");
-                System.out.println("4- Buscar Estudante");
+                System.out.println("4 - Buscar Estudante");
                 System.out.println("5 - Mostrar todos os estudantes");
                 System.out.println("6 - Voltar para o menu principal");
             }
@@ -84,7 +84,7 @@ public class ServiceEstudante extends ServicePessoa implements IService {
         Estudante newEstudante = new Estudante();
         Utils.clearTerminal();
         getPessoaInfo(newEstudante);
-        newEstudante.setId(Long.valueOf(repositoryEstudante.getAmountOfElements() + 1));
+        newEstudante.setId(Long.valueOf(repositoryEstudante.getLastIndex() + 1));
         System.out.println("Informe o curso do " + newEstudante.getNome());
         newEstudante.setCurso(scan.nextLine());
         setInstituicao(newEstudante);
