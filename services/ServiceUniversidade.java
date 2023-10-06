@@ -7,8 +7,7 @@ import repositories.RepositoryUniversidade;
 import util.Utils;
 
 public class ServiceUniversidade extends ServiceInstituicao implements IService {
-    private RepositoryUniversidade repositoryUniversidade = RepositoryUniversidade.getInstance();
-
+    
     public void menuInicial() {
         int optionInt = 0;
 
@@ -68,12 +67,12 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
     }
 
     public void register() {
-        repositoryUniversidade.addElement(getUniversidadeInfo());
+        RepositoryUniversidade.getInstance().addElement(getUniversidadeInfo());
     }
 
     private Universidade getUniversidadeInfo() {
         Universidade newUniversidade = new Universidade();
-        newUniversidade.setId(Long.valueOf((repositoryUniversidade.getLastIndex() + 1)));
+        newUniversidade.setId(Long.valueOf((RepositoryUniversidade.getInstance().getLastIndex() + 1)));
         getInstituicaoInfo(newUniversidade);
         System.out.println("Informe o Reitor");
         newUniversidade.setReitor(scan.nextLine());
@@ -104,7 +103,7 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
             if (Universidade == null) {
                 System.out.println("Universidade não encontrado");
             } else {
-                Boolean result = repositoryUniversidade.deleteElement(Universidade);
+                Boolean result = RepositoryUniversidade.getInstance().deleteElement(Universidade);
                 if (result) {
                     System.out.println("Universidade Deletado com sucesso");
                 } else {
@@ -133,7 +132,7 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
             } else {
                 Universidade newUniversidade = getUniversidadeInfo();
                 newUniversidade.setId(Universidade.getId());
-                Boolean result = repositoryUniversidade.updateElement(optionLong, newUniversidade);
+                Boolean result = RepositoryUniversidade.getInstance().updateElement(optionLong, newUniversidade);
                 if (result) {
                     System.out.println("Universidade Atualizado com sucesso");
                 } else {
@@ -170,11 +169,11 @@ public class ServiceUniversidade extends ServiceInstituicao implements IService 
     }
 
     private Universidade getUniversidade(Long id) {
-        return repositoryUniversidade.findElementById(id);
+        return RepositoryUniversidade.getInstance().findElementById(id);
     }
 
     public void querryAll() {
-        List<Universidade> Universidades = repositoryUniversidade.findAllElements();
+        List<Universidade> Universidades = RepositoryUniversidade.getInstance().findAllElements();
         if (Universidades.isEmpty()) {
             System.out.println("Nenhum Universidade cadastrado!");
         } else {

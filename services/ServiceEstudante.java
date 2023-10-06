@@ -10,7 +10,6 @@ import repositories.RepositoryEstudante;
 
 public class ServiceEstudante extends ServicePessoa implements IService {
 
-    private RepositoryEstudante repositoryEstudante = RepositoryEstudante.getInstance();
 
     public void menuInicial() {
         int optionInt = 0;
@@ -76,7 +75,7 @@ public class ServiceEstudante extends ServicePessoa implements IService {
     }
 
     public void register() {
-        repositoryEstudante.addElement(getEstudanteInfo());
+        RepositoryEstudante.getInstance().addElement(getEstudanteInfo());
     }
 
     private Estudante getEstudanteInfo() {
@@ -84,7 +83,7 @@ public class ServiceEstudante extends ServicePessoa implements IService {
         Estudante newEstudante = new Estudante();
         Utils.clearTerminal();
         getPessoaInfo(newEstudante);
-        newEstudante.setId(Long.valueOf(repositoryEstudante.getLastIndex() + 1));
+        newEstudante.setId(Long.valueOf(RepositoryEstudante.getInstance().getLastIndex() + 1));
         System.out.println("Informe o curso do " + newEstudante.getNome());
         newEstudante.setCurso(scan.nextLine());
         setInstituicao(newEstudante);
@@ -120,7 +119,7 @@ public class ServiceEstudante extends ServicePessoa implements IService {
             if (estudante == null) {
                 System.out.println("Estudante não encontrado");
             } else {
-                Boolean result = repositoryEstudante.deleteElement(estudante);
+                Boolean result = RepositoryEstudante.getInstance().deleteElement(estudante);
                 if (result) {
                     System.out.println("Estudante Deletado com sucesso");
                 } else {
@@ -151,7 +150,7 @@ public class ServiceEstudante extends ServicePessoa implements IService {
                 newEstudante.setId(estudante.getId());
                 newEstudante.setCodigoDePesoa(estudante.getCodigoDePesoa());
 
-                Boolean result = repositoryEstudante.updateElement(optionLong, newEstudante);
+                Boolean result = RepositoryEstudante.getInstance().updateElement(optionLong, newEstudante);
                 if (result) {
                     System.out.println("Estudante Atualizado com sucesso");
                 } else {
@@ -188,11 +187,11 @@ public class ServiceEstudante extends ServicePessoa implements IService {
     }
 
     private Estudante getEstudante(Long id) {
-        return repositoryEstudante.findElementById(id);
+        return RepositoryEstudante.getInstance().findElementById(id);
     }
 
     public void querryAll() {
-        List<Estudante> estudantes = repositoryEstudante.findAllElements();
+        List<Estudante> estudantes = RepositoryEstudante.getInstance().findAllElements();
         if (estudantes.isEmpty()) {
             System.out.println("Nenhum estudante cadastrado!");
         } else {

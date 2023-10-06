@@ -7,8 +7,6 @@ import repositories.RepositoryProfessor;
 import util.Utils;
 
 public class ServiceProfessor extends ServicePessoa implements IService {
-    private RepositoryProfessor repositoryProfessor = RepositoryProfessor.getInstance();
-
 
     public void menuInicial() {
         int optionInt = 0;
@@ -74,12 +72,12 @@ public class ServiceProfessor extends ServicePessoa implements IService {
     }
 
     public void register() {
-        repositoryProfessor.addElement(getProfessorInfo());
+        RepositoryProfessor.getInstance().addElement(getProfessorInfo());
     }
 
     private Professor getProfessorInfo() {
         Professor newProfessor = new Professor();
-        newProfessor.setId(Long.valueOf((repositoryProfessor.getLastIndex() + 1)));
+        newProfessor.setId(Long.valueOf((RepositoryProfessor.getInstance().getLastIndex() + 1)));
         getPessoaInfo(newProfessor);
         System.out.println("Informe o nome do Departamento");
         newProfessor.setDepartamento(scan.nextLine());
@@ -109,7 +107,7 @@ public class ServiceProfessor extends ServicePessoa implements IService {
             if (Professor == null) {
                 System.out.println("Professor não encontrado");
             } else {
-                Boolean result = repositoryProfessor.deleteElement(Professor);
+                Boolean result = RepositoryProfessor.getInstance().deleteElement(Professor);
                 if (result) {
                     System.out.println("Professor Deletado com sucesso");
                 } else {
@@ -140,7 +138,7 @@ public class ServiceProfessor extends ServicePessoa implements IService {
                 newProfessor.setId(Professor.getId());
                 newProfessor.setCodigoDePesoa(Professor.getCodigoDePesoa());
 
-                Boolean result = repositoryProfessor.updateElement(optionLong, newProfessor);
+                Boolean result = RepositoryProfessor.getInstance().updateElement(optionLong, newProfessor);
                 if (result) {
                     System.out.println("Professor Atualizado com sucesso");
                 } else {
@@ -177,11 +175,11 @@ public class ServiceProfessor extends ServicePessoa implements IService {
     }
 
     private Professor getProfessor(Long id) {
-        return repositoryProfessor.findElementById(id);
+        return RepositoryProfessor.getInstance().findElementById(id);
     }
 
     public void querryAll() {
-        List<Professor> Professors = repositoryProfessor.findAllElements();
+        List<Professor> Professors = RepositoryProfessor.getInstance().findAllElements();
         if (Professors.isEmpty()) {
             System.out.println("Nenhum Professor cadastrado!");
         } else {

@@ -7,8 +7,6 @@ import repositories.RepositoryProfissional;
 import util.Utils;
 
 public class ServiceProfissional extends ServicePessoa implements IService {
-    private RepositoryProfissional repositoryProfissional = RepositoryProfissional.getInstance();
-
 
     public void menuInicial() {
         int optionInt = 0;
@@ -74,12 +72,12 @@ public class ServiceProfissional extends ServicePessoa implements IService {
     }
 
     public void register() {
-        repositoryProfissional.addElement(getProfissionalInfo());
+        RepositoryProfissional.getInstance().addElement(getProfissionalInfo());
     }
 
     private Profissional getProfissionalInfo() {
         Profissional newProfissional = new Profissional();
-        newProfissional.setId(Long.valueOf((repositoryProfissional.getLastIndex() + 1)));
+        newProfissional.setId(Long.valueOf((RepositoryProfissional.getInstance().getLastIndex() + 1)));
         getPessoaInfo(newProfissional);
         newProfissional.setSalario(getSalario(newProfissional));
         return newProfissional;
@@ -107,7 +105,7 @@ public class ServiceProfissional extends ServicePessoa implements IService {
             if (Profissional == null) {
                 System.out.println("Profissional não encontrado");
             } else {
-                Boolean result = repositoryProfissional.deleteElement(Profissional);
+                Boolean result = RepositoryProfissional.getInstance().deleteElement(Profissional);
                 if (result) {
                     System.out.println("Profissional Deletado com sucesso");
                 } else {
@@ -138,7 +136,7 @@ public class ServiceProfissional extends ServicePessoa implements IService {
                 newProfissional.setId(Profissional.getId());
                 newProfissional.setCodigoDePesoa(Profissional.getCodigoDePesoa());
 
-                Boolean result = repositoryProfissional.updateElement(optionLong, newProfissional);
+                Boolean result = RepositoryProfissional.getInstance().updateElement(optionLong, newProfissional);
                 if (result) {
                     System.out.println("Profissional Atualizado com sucesso");
                 } else {
@@ -175,11 +173,11 @@ public class ServiceProfissional extends ServicePessoa implements IService {
     }
 
     private Profissional getProfissional(Long id) {
-        return repositoryProfissional.findElementById(id);
+        return RepositoryProfissional.getInstance().findElementById(id);
     }
 
     public void querryAll() {
-        List<Profissional> Profissionals = repositoryProfissional.findAllElements();
+        List<Profissional> Profissionals = RepositoryProfissional.getInstance().findAllElements();
         if (Profissionals.isEmpty()) {
             System.out.println("Nenhum Profissional cadastrado!");
         } else {

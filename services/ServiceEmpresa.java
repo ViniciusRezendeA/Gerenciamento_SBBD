@@ -7,7 +7,6 @@ import repositories.RepositoryEmpresa;
 import util.Utils;
 
 public class ServiceEmpresa extends ServiceInstituicao implements IService {
-    private RepositoryEmpresa repositoryEmpresa = RepositoryEmpresa.getInstance();
 
     public void menuInicial() {
         int optionInt = 0;
@@ -68,12 +67,12 @@ public class ServiceEmpresa extends ServiceInstituicao implements IService {
     }
 
     public void register() {
-        repositoryEmpresa.addElement(getEmpresaInfo());
+        RepositoryEmpresa.getInstance().addElement(getEmpresaInfo());
     }
 
     private Empresa getEmpresaInfo() {
         Empresa newEmpresa = new Empresa();
-        newEmpresa.setId(Long.valueOf((repositoryEmpresa.getLastIndex() + 1)));
+        newEmpresa.setId(Long.valueOf((RepositoryEmpresa.getInstance().getLastIndex() + 1)));
         getInstituicaoInfo(newEmpresa);
         System.out.println("Informe o ramo");
         newEmpresa.setRamo(scan.nextLine());
@@ -91,7 +90,7 @@ public class ServiceEmpresa extends ServiceInstituicao implements IService {
             if (Empresa == null) {
                 System.out.println("Empresa não encontrado");
             } else {
-                Boolean result = repositoryEmpresa.deleteElement(Empresa);
+                Boolean result = RepositoryEmpresa.getInstance().deleteElement(Empresa);
                 if (result) {
                     System.out.println("Empresa Deletado com sucesso");
                 } else {
@@ -120,7 +119,7 @@ public class ServiceEmpresa extends ServiceInstituicao implements IService {
             } else {
                 Empresa newEmpresa = getEmpresaInfo();
                 newEmpresa.setId(Empresa.getId());
-                Boolean result = repositoryEmpresa.updateElement(optionLong, newEmpresa);
+                Boolean result = RepositoryEmpresa.getInstance().updateElement(optionLong, newEmpresa);
                 if (result) {
                     System.out.println("Empresa Atualizado com sucesso");
                 } else {
@@ -157,11 +156,11 @@ public class ServiceEmpresa extends ServiceInstituicao implements IService {
     }
 
     private Empresa getEmpresa(Long id) {
-        return repositoryEmpresa.findElementById(id);
+        return RepositoryEmpresa.getInstance().findElementById(id);
     }
 
     public void querryAll() {
-        List<Empresa> Empresas = repositoryEmpresa.findAllElements();
+        List<Empresa> Empresas = RepositoryEmpresa.getInstance().findAllElements();
         if (Empresas.isEmpty()) {
             System.out.println("Nenhum Empresa cadastrado!");
         } else {
