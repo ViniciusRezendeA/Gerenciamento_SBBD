@@ -10,7 +10,7 @@ import repositories.RepositoryEmpresa;
 import repositories.RepositoryEstudante;
 import repositories.RepositoryUniversidade;
 
-public class ServiceEstudante extends ServicePessoa {
+public class ServiceEstudante extends ServicePessoa implements IService {
 
     private RepositoryEstudante repositoryEstudante = RepositoryEstudante.getInstance();
     private RepositoryEmpresa repositoryEmpresa = RepositoryEmpresa.getInstance();
@@ -50,23 +50,23 @@ public class ServiceEstudante extends ServicePessoa {
                         System.out.println("Cadastre uma Empresa ou Universidade!");
                         System.out.println("Pressione enter para continuar...");
                     } else {
-                        cadastrarEstudande();
+                        register();
                     }
                     break;
 
                 case 2:
-                    deletarEstudante();
+                    delete();
                     break;
 
                 case 3:
-                    updateEstudante();
+                    update();
                     break;
 
                 case 4:
-                    buscarEstudante();
+                    querryById();
                     break;
                 case 5:
-                    mostrarTodosEstudantes();
+                    querryAll();
                     break;
 
                 default:
@@ -78,7 +78,7 @@ public class ServiceEstudante extends ServicePessoa {
         } while (optionInt != 6);
     }
 
-    private void cadastrarEstudande() {
+    public void register() {
         repositoryEstudante.addElement(getEstudanteInfo());
     }
 
@@ -112,7 +112,7 @@ public class ServiceEstudante extends ServicePessoa {
         }
     }
 
-    private void deletarEstudante() {
+    public void delete() {
         Utils.clearTerminal();
         System.out.println("Informe o id do Estudante");
         String option = scan.nextLine();
@@ -134,12 +134,12 @@ public class ServiceEstudante extends ServicePessoa {
 
         } catch (Exception e) {
             System.out.println("Opção inválida!");
-            deletarEstudante();
+            delete();
         }
 
     }
 
-    private void updateEstudante() {
+    public void update() {
         Utils.clearTerminal();
         System.out.println("Informe o id do Estudante");
         String option = scan.nextLine();
@@ -164,12 +164,12 @@ public class ServiceEstudante extends ServicePessoa {
             }
         } catch (Exception e) {
             System.out.println("Opção inválida!");
-            updateEstudante();
+            update();
         }
 
     }
 
-    private void buscarEstudante() {
+    public void querryById() {
         Utils.clearTerminal();
         System.out.println("Informe o id do Estudante");
         String option = scan.nextLine();
@@ -185,7 +185,7 @@ public class ServiceEstudante extends ServicePessoa {
 
         } catch (Exception e) {
             System.out.println("Opção inválida!");
-            buscarEstudante();
+            querryById();
         }
 
     }
@@ -194,7 +194,7 @@ public class ServiceEstudante extends ServicePessoa {
         return repositoryEstudante.findElementById(id);
     }
 
-    private void mostrarTodosEstudantes() {
+    public void querryAll() {
         List<Estudante> estudantes = repositoryEstudante.findAllElements();
         if (estudantes.isEmpty()) {
             System.out.println("Nenhum estudante cadastrado!");
